@@ -91,7 +91,7 @@ protected:
 	UPROPERTY(BlueprintReadWrite)
 	UInventory* InventoryWidget;
 	
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere)
 	UInventoryComponent* InventoryComponent;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)

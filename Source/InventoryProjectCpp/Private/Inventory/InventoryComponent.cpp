@@ -48,6 +48,7 @@ bool UInventoryComponent::TryAddItem(UItemObject* ItemObject)
 	{
 		return false;
 	}
+
 	for (int32 i = 0; i < Items.Num(); i++)
 	{
 		if (IsRoomAvailable(ItemObject, i))
@@ -56,6 +57,7 @@ bool UInventoryComponent::TryAddItem(UItemObject* ItemObject)
 			return true;
 		}
 	}
+
 	for (int32 i = 0; i < Items.Num(); i++)
 	{
 		ItemObject->Rotate();
@@ -66,6 +68,7 @@ bool UInventoryComponent::TryAddItem(UItemObject* ItemObject)
 		}
 		ItemObject->Rotate();
 	}
+
 	return false; 
 }
 
@@ -73,6 +76,7 @@ void UInventoryComponent::AddItemAt(UItemObject* ItemObject, int32 TopLeftIndex)
 {
 	int32 tileX = IndexToTile(TopLeftIndex).X;
 	int32 tileY = IndexToTile(TopLeftIndex).Y;
+
 	for (int32 n = tileX; n < tileX + ItemObject->GetDimensions().X; n++)
 	{
 		for (int32 m = tileY; m < tileY + ItemObject->GetDimensions().Y; m++)
@@ -86,9 +90,9 @@ void UInventoryComponent::AddItemAt(UItemObject* ItemObject, int32 TopLeftIndex)
 
 bool UInventoryComponent::IsRoomAvailable(UItemObject* ItemObject, int32 TopLeftIndex) const
 {
-
 	int32 tileX = IndexToTile(TopLeftIndex).X;
 	int32 tileY = IndexToTile(TopLeftIndex).Y;
+
 	for (int32 n = tileX; n < tileX + ItemObject->GetDimensions().X; n++)
 	{
 		for (int32 m = tileY; m < tileY + ItemObject->GetDimensions().Y; m++)

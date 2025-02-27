@@ -64,5 +64,7 @@ protected:
 private:
 	
 	bool IsDirty = false;
+
+	UPROPERTY(VisibleAnywhere)
 	TArray<UItemObject*> Items;
 };
