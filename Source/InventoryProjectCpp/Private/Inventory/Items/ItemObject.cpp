@@ -10,14 +10,18 @@ UItemObject::UItemObject()
 	RIcon = nullptr;
 	bRotated = false;
 	ItemActorClass = nullptr;
+
+	StackCount = 1;
 }
 
-void UItemObject::InitializeItemObject(int32 dimensionX, int32 dimensionY, UMaterialInterface* InIcon, UMaterialInterface* InRIcon,TSubclassOf<AItemActor> itemClass)
+void UItemObject::InitializeItemObject(int32 dimensionX, int32 dimensionY, UMaterialInterface* InIcon, UMaterialInterface* InRIcon, TSubclassOf<AItemActor> itemClass, const int32 NewStackCount)
 {
 	Dimensions = FIntPoint(dimensionX, dimensionY);
 	Icon = InIcon;
 	RIcon = InRIcon;
 	ItemActorClass = itemClass;
+
+	StackCount = NewStackCount;
 }
 
 FIntPoint UItemObject::GetDimensions() const

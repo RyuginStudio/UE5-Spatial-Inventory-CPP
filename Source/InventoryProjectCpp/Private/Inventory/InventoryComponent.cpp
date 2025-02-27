@@ -1,7 +1,6 @@
 #include "Inventory/InventoryComponent.h"
-
 #include "Inventory/Items/ItemObject.h"
-
+#include "Inventory/Items/ItemActor.h"
 
 UInventoryComponent::UInventoryComponent()
 {
@@ -47,6 +46,17 @@ bool UInventoryComponent::TryAddItem(UItemObject* ItemObject)
 	if (!ItemObject)
 	{
 		return false;
+	}
+
+	const auto StackCount = ItemObject->StackCount;
+	for (const auto& ItemElement : Items)
+	{
+		if (IsValid(ItemElement) && ItemElement->GetItemClass() == ItemObject->GetItemClass() && ItemElement->Amount < ItemElement->StackCount)
+		{
+			// 纯为了验证一下吧。。。
+			++ItemElement->Amount;
+			return true;
+		}
 	}
 
 	for (int32 i = 0; i < Items.Num(); i++)
